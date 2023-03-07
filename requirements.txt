@@ -1,0 +1,10 @@
+# Support library for versioning
+importlib-metadata
+
+# Framework and libraries
+flask
+python-dotenv
+pymongo
+
+# Git hooks
+pre-commit

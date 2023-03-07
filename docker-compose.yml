@@ -1,0 +1,65 @@
+# Defines the application's Docker image and additional services
+# https://docs.docker.com/compose/compose-file/
+# To run using docker-compose, use the command:
+#   docker-compose up --build 2do
+
+version: '3'
+services:
+  2do:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+
+    working_dir: /app
+
+    # Ports to expose to the host. Uncomment if running outside of vscode.
+    # ports:
+      # - 5001:5001
+
+    # Volumes to mount from the host.
+    volumes:
+      # Mount local source folder into container
+      - .:/app
+      # Add volume for vscode extensions
+      - 2do-vscode-extensions:/home/vscode/.vscode-server/extensions
+      # mountpoints for kubernetes syncing.
+      - ${HOME}/.kube:/usr/local/share/kube-localhost:cached
+      - ${HOME}/.minikube:/usr/local/share/minikube-localhost:cached
+
+    environment:
+      #FLASK_APP: 2do:app
+      FLASK_DEBUG: 1
+      #FLASK_RUN_PORT: 5001
+
+    ## Don't restart container if it exits. Useful for debugging, not for production.
+    restart: 'no'
+    depends_on:
+      - mongodb
+    
+  2do-frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile
+    working_dir: /frontend
+    volumes:
+      - ./src/frontend/src:/frontend/src
+      - /frontend/node_modules
+      - 2do-front-extensions:/home/vscode/.vscode-server/extensions
+    # environment:
+    ports:
+      - 5173:5173
+
+  mongodb:
+    image: mongo:4.2
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb-data:/data/db
+
+volumes:
+  2do-vscode-extensions:
+
+  2do-front-extensions:
+
+  mongodb-data:
