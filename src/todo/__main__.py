@@ -5,7 +5,7 @@ Note: This file is only used when running the application directly. When app sta
 from Flask or gunicorn, this file is skipped.
 
 To run the application module using this file, run the following command:
-    python -m 2do
+    python -m todo
 
 """
 

@@ -16,7 +16,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://2do:5001',
+        target: 'http://todo:5001',
         changeOrigin: true,
         secure: false,
       },

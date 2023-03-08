@@ -36,8 +36,8 @@ def create_app(config: Optional[Dict] = None) -> Flask:
     flask_app.config.from_envvar("RICH_LOGGING", silent=True)
 
     # Register blueprints
-    from . import views  # pylint: disable=import-outside-toplevel
-    flask_app.register_blueprint(views.bp, url_prefix='')
+    #from . import views  # pylint: disable=import-outside-toplevel
+    #flask_app.register_blueprint(views.bp, url_prefix='')
 
     return flask_app
 

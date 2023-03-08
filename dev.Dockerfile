@@ -13,7 +13,7 @@ WORKDIR /app
 
 ## Declare default flask app as environment variable
 ## https://flask.palletsprojects.com/en/2.2.x/cli/
-ARG FLASK_APP=2do.app
+ARG FLASK_APP=todo.app
 ENV FLASK_APP=${FLASK_APP}
 
 ## Setup the default port for flask to listen on
@@ -29,7 +29,7 @@ CMD flask run --host=0.0.0.0 # --port=${FLASK_RUN_PORT} --app=${FLASK_APP}
 ## Run nothing, so that the container can be used as a base image
 #CMD ["bash", "-c", "sleep infinity"]
 ## Run Flask app using Gunicorn, which unlike Flask, doesn't complain about being development thing.
-#CMD gunicorn --bind "0.0.0.0:${PORT}"" 2do.app:app
+#CMD gunicorn --bind "0.0.0.0:${PORT}"" todo.app:app
 
 ## Install requirements using pip. This is done before copying the app, so that
 ## requirements layer is cached. This way, if app code changes, only app code is

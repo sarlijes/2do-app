@@ -1,5 +1,5 @@
 {
-  "name": "2do-frontend",
+  "name": "todo-frontend",
   "version": "0.0.1",
   "description": "React frontend for the auction system.",
   "main": "index.js",

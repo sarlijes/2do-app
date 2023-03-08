@@ -1,4 +1,4 @@
-# Package setup for 2do
+# Package setup for todo
 # ==========================
 
 # This file is used to install the package and its dependencies.
@@ -13,8 +13,8 @@
 #     https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
 
 [project]
-name = "2do"
-description = "2do App - Portfolio Project"
+name = "todo"
+description = "todo App - Portfolio Project"
 version = "0.0.1"
 authors = [
   { name="Jessica Sarlin" },
